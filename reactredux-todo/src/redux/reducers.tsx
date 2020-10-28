@@ -1,5 +1,5 @@
-import {VisibilityFilters, ADD_TODO, SET_VISIBILITY_FILTER, addTodo} from 'redux/actions'
-import {AppState} from 'types'
+import {VisibilityFilters, ADD_TODO, SET_VISIBILITY_FILTER} from 'redux/actions'
+import {AppState, TodoActionTypes} from 'types'
 
 //reducers show how the state changes in response to an action
 //reducers must remain PURE, no side Effects, no api calls, no mutations, just calculations
@@ -12,7 +12,7 @@ const initialState : AppState = {
 }
 
 
-function todoApp(state: AppState = initialState , action: typeof addTodo ){
+function todoApp(state: AppState = initialState , action: TodoActionTypes){
     switch(action.type){
         case SET_VISIBILITY_FILTER:
             return{
@@ -30,3 +30,5 @@ function todoApp(state: AppState = initialState , action: typeof addTodo ){
             return state
     }
 }
+
+export default todoApp

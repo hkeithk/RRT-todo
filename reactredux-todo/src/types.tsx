@@ -12,4 +12,17 @@ export interface AppState{
 
 export interface AddTodoAction{
     type: typeof ADD_TODO;
+    text: string;
 }
+
+export interface ToggleTodoAction{
+    type: typeof TOGGLE_TODO;
+    index: number;
+}
+
+export interface SetVisibilityFilterAction{
+    type: typeof SET_VISIBILITY_FILTER;
+    filter: string;
+}
+
+export type TodoActionTypes = AddTodoAction | ToggleTodoAction | SetVisibilityFilterAction;
