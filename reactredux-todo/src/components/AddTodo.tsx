@@ -1,33 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Dispatch } from 'redux';
+import { addTodo } from 'redux/actions';
+import { connect } from 'react-redux';
+import { Todo } from 'types';
 
-
-export default class AddTodo extends Component<{}, {input: string}> {
-    constructor(props: any){
-        super(props);
-        this.state={
-            input: ''
-        }
-    }
-
-    //arrow functions dont need bindin
-    handleInputClick = (event: React.FormEvent<HTMLInputElement>) => {
-        this.setState({input: event.currentTarget.value})
-        console.log(this.state)
-    }
-
-    handleSubmit = (event: React.FormEvent<HTMLButtonElement>) => {
-        // this.set
-    }
-
-    
-    
-    render() {
-        
-        return (
-            <div>
-                <input value={this.state.input} onChange={ event => this.handleInputClick(event)}></input>
-                <button>Add Todo</button>
-            </div>
-        )
-    }
+interface Props {
+  dispatch: Dispatch;
 }
+
+const AddTodo: React.FC<Props> = (props: Props): JSX.Element => {
+  const [input, setInput] = React.useState('');
+  const { dispatch } = props;
+
+  const handleInputChange = (event: React.FormEvent<HTMLInputElement>) => {
+    setInput(event.currentTarget.value);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    dispatch(addTodo(input));
+    setInput('');
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input value={input} onChange={(event) => handleInputChange(event)}></input>
+        <button>Add Todo</button>
+      </form>
+    </div>
+  );
+};
+
+// no subscription to store - doesnt need updates
+// no dispatch needed (2nd arg) - dispatch is given automatically
+export default connect()(AddTodo);
