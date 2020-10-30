@@ -13,9 +13,8 @@ interface Props {
 // {(todos || []).map((todo: Todo)
 
 const TodoList: React.FC<Props> = ({ todos, deleteTodo, toggleVisibility }) => {
-  console.log(todos);
   return (
-    <ul>
+    <div>
       {todos && Object.keys(todos).length > 0 ? (
         (todos || []).map((todo: Todo) => (
           <TodoItem
@@ -26,9 +25,9 @@ const TodoList: React.FC<Props> = ({ todos, deleteTodo, toggleVisibility }) => {
           />
         ))
       ) : (
-        <li>No todo items!</li>
+        <p>Yay! You have no Todo items!</p>
       )}
-    </ul>
+    </div>
   );
 };
 

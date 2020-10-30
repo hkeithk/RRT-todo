@@ -1,0 +1,18 @@
+.input-todo {
+  border: none;
+  padding: 8px 30px 8px 15px;
+
+  border-radius: 5px;
+}
+
+.input-todo:focus {
+  /* padding-right: 80px; */
+  width: 40%;
+}
+
+.add-button {
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-left: 15px;
+}

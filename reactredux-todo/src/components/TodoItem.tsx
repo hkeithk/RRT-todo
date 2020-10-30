@@ -1,4 +1,5 @@
 import React from 'react';
+import 'css/todoitem.css';
 
 interface Props {
   text: string;
@@ -8,11 +9,15 @@ interface Props {
 }
 
 export const TodoItem: React.FC<Props> = ({ text, deleteTodo, toggleVisibility }) => (
-  <li>
-    {text}
-    <button onClick={toggleVisibility}>Toggle</button>
-    <button onClick={deleteTodo}>delete</button>
-  </li>
+  <div className='item-container'>
+    <p className='text'>{text}</p>
+    <button className='button' onClick={toggleVisibility}>
+      Toggle
+    </button>
+    <button className='button' onClick={deleteTodo}>
+      delete
+    </button>
+  </div>
 );
 
 export default TodoItem;

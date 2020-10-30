@@ -1,4 +1,4 @@
-import { ADD_TODO } from 'redux/actions';
+import { ADD_TODO, DELETE_TODO } from 'redux/actions';
 import { TodoActionTypes, TodoState } from 'types';
 
 //reducers show how the state changes in response to an action
@@ -13,6 +13,10 @@ function todoApp(state: TodoState = initialState, action: TodoActionTypes): Todo
     case ADD_TODO:
       return {
         todos: [...state.todos, { text: action.text, completed: false, id: action.id }],
+      };
+    case DELETE_TODO:
+      return {
+        todos: [...state.todos.filter((item) => item.id !== action.id)],
       };
     default:
       return state;

@@ -3,6 +3,7 @@ import { Dispatch } from 'redux';
 import { addTodo } from 'redux/actions';
 import { connect } from 'react-redux';
 import { Todo } from 'types';
+import 'css/addTodo.css';
 
 interface Props {
   dispatch: Dispatch;
@@ -25,8 +26,15 @@ const AddTodo: React.FC<Props> = (props: Props): JSX.Element => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input value={input} onChange={(event) => handleInputChange(event)}></input>
-        <button>Add Todo</button>
+        <input
+          className='input-todo'
+          value={input}
+          onChange={(event) => handleInputChange(event)}
+          placeholder='Add a task'
+        />
+        <button className='add-button' type='submit'>
+          Add Todo
+        </button>
       </form>
     </div>
   );
