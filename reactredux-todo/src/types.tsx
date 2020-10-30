@@ -1,8 +1,9 @@
-import { ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER } from 'redux/actions';
+import { ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER, DELETE_TODO } from 'redux/actions';
 
 export interface Todo {
   text: string;
   completed: boolean;
+  id: number;
 }
 export interface TodoState {
   todos: Array<Todo>;
@@ -10,7 +11,7 @@ export interface TodoState {
 
 export interface AppState {
   //   visibilityFilter: string;
-  todoList: Array<Todo>;
+  todoState: TodoState;
 }
 
 export interface AddTodoAction {
@@ -21,7 +22,12 @@ export interface AddTodoAction {
 
 export interface ToggleTodoAction {
   type: typeof TOGGLE_TODO;
-  index: number;
+  id: number;
+}
+
+interface DeleteTodoAction {
+  type: typeof DELETE_TODO;
+  id: number;
 }
 
 export interface SetVisibilityFilterAction {
@@ -29,4 +35,8 @@ export interface SetVisibilityFilterAction {
   filter: string;
 }
 
-export type TodoActionTypes = AddTodoAction | ToggleTodoAction | SetVisibilityFilterAction;
+export type TodoActionTypes =
+  | AddTodoAction
+  | ToggleTodoAction
+  | SetVisibilityFilterAction
+  | DeleteTodoAction;

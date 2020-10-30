@@ -1,34 +1,37 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Todo, AppState } from 'types';
+import { Todo } from 'types';
+import { TodoItem } from 'components/TodoItem';
 
 // typing connect requires a state, dispatch, and own props. Connected
 
-interface StateProps {
-  todoList: Array<Todo>;
-  // deleteTodo: (id: number) => void;
+interface Props {
+  todos: Array<Todo>;
+  deleteTodo: (id: number) => void;
+  toggleVisibility: (id: number) => void;
 }
-
 // type AllProps = StateProps | DispatchProps | OwnProps;
+// {(todos || []).map((todo: Todo)
 
-const TodoList = (props: StateProps) => {
-  console.log(props.todoList);
+const TodoList: React.FC<Props> = ({ todos, deleteTodo, toggleVisibility }) => {
+  console.log(todos);
   return (
-    <div>
-      {props.todoList && props.todoList.length ? (
-        props.todoList.map((todo: Todo, index: number) => <p key={index}>{todo.text}</p>)
+    <ul>
+      {todos && Object.keys(todos).length > 0 ? (
+        (todos || []).map((todo: Todo) => (
+          <TodoItem
+            key={todo.id}
+            deleteTodo={() => deleteTodo(todo.id)}
+            toggleVisibility={() => toggleVisibility(todo.id)}
+            {...todo}
+          />
+        ))
       ) : (
-        <p>Your Todolist is empty!</p>
+        <li>No todo items!</li>
       )}
-    </div>
+    </ul>
   );
 };
 
-//selects which part of redux state you want, and returns that part, called everytime store changes,
-//like useSelector. first argument is redux state, second is ownProps
-const mapStateToProps = (state: AppState): StateProps => {
-  return { todoList: state.todoList };
-};
+export default TodoList;
 
-export default connect<StateProps, null, {}, AppState>(mapStateToProps)(TodoList);
 // export default connect<StateProps, {}, OwnProps>(mapStateToProps)(TodoList);

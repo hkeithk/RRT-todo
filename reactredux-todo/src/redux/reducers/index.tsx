@@ -1,4 +1,4 @@
 import { combineReducers } from 'redux';
-import todoApp from 'redux/reducers/TodoReducer';
+import TodoReducer from 'redux/reducers/TodoReducer';
 
-export default combineReducers({ todoApp });
+export default combineReducers({ todoState: TodoReducer });
