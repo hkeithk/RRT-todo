@@ -1,8 +1,8 @@
 import React from 'react';
 import AddTodo from 'components/AddTodo';
-import 'css/app.css';
-
 import VisibleTodoList from 'containers/VisibleTodos';
+import FilterOptions from 'containers/FilterOptions';
+import 'css/app.css';
 
 const App: React.FC = () => {
   return (
@@ -11,6 +11,7 @@ const App: React.FC = () => {
         <h1>Todolist</h1>
         <div className='main-body'>
           <AddTodo />
+          <FilterOptions />
           <VisibleTodoList />
         </div>
       </header>

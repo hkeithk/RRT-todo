@@ -5,15 +5,23 @@ export interface Todo {
   completed: boolean;
   id: number;
 }
+
+//--------- State Types -------------
+export interface AppState {
+  //   visibilityFilter: string;
+  todoState: TodoState;
+  visibilityState: VisibilityState;
+}
+
 export interface TodoState {
   todos: Array<Todo>;
 }
 
-export interface AppState {
-  //   visibilityFilter: string;
-  todoState: TodoState;
+export interface VisibilityState {
+  filter: string;
 }
 
+// --------- Action Types---------
 export interface AddTodoAction {
   type: typeof ADD_TODO;
   id: number;
