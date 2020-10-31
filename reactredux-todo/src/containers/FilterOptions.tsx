@@ -1,15 +1,27 @@
 import React from 'react';
 import FilterButton from 'components/FilterButton';
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import { AppState } from 'types';
+import { setVisibilityFilter } from 'redux/actions';
 
 //interfaces for mapstate and mapdispatch
+interface StateFromProps {
+  visibilityFilter: string;
+}
 
-export const FilterOptions = () => {
-  return <div></div>;
+interface DispatchFromProps {
+  setFilter: (filter: string) => void;
+}
+
+const mapStateToProps = (state: AppState): StateFromProps => {
+  return {
+    visibilityFilter: state.visibilityState.filter,
+  };
 };
 
-// const mapStateToProps
+const mapDispatchToProps = (dispatch: Dispatch): DispatchFromProps => ({
+  setFilter: (filter: string) => dispatch(setVisibilityFilter(filter)),
+});
 
-//const mapDispatchToProps
-
-export default connect()(FilterButton);
+export default connect(mapStateToProps, mapDispatchToProps)(FilterButton);

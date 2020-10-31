@@ -43,8 +43,4 @@ export interface SetVisibilityFilterAction {
   filter: string;
 }
 
-export type TodoActionTypes =
-  | AddTodoAction
-  | ToggleTodoAction
-  | SetVisibilityFilterAction
-  | DeleteTodoAction;
+export type TodoActionTypes = AddTodoAction | ToggleTodoAction | DeleteTodoAction;

@@ -8,7 +8,7 @@ const initialState: TodoState = {
   todos: [],
 };
 
-function todoApp(state: TodoState = initialState, action: TodoActionTypes): TodoState {
+function todoReducer(state: TodoState = initialState, action: TodoActionTypes): TodoState {
   switch (action.type) {
     case ADD_TODO:
       return {
@@ -29,4 +29,4 @@ function todoApp(state: TodoState = initialState, action: TodoActionTypes): Todo
   }
 }
 
-export default todoApp;
+export default todoReducer;
