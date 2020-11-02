@@ -3,23 +3,15 @@ import { VisibilityFilters } from 'redux/actions';
 
 interface Props {
   visibilityFilter: string;
-  setVisibilityFilter: (filter: string) => void;
+  setFilter: (filter: string) => void;
 }
 
-const FilterButton: React.FC<Props> = ({ setVisibilityFilter, visibilityFilter }) => {
-  // const filterHandler = (value: number) => {
-  //   switch(value){
-  //     case 1:
-  //       setVisibilityFilter('SHOW_ALL')
-  //     case 2:
-  //       setVisibilityFilter('C')
-  //   }
-  // }
+const FilterButton: React.FC<Props> = ({ setFilter, visibilityFilter }) => {
   return (
     <div>
-      {/* <button onClick={setVisibilityFilter(VisibilityFilters.SHOW_ALL)}>Show All</button> */}
-      <button>Show Active</button>
-      <button>Show Complete</button>
+      <button onClick={() => setFilter(VisibilityFilters.SHOW_ALL)}>Show All</button>
+      <button onClick={() => setFilter(VisibilityFilters.SHOW_INCOMPLETE)}>Show Active</button>
+      <button onClick={() => setFilter(VisibilityFilters.SHOW_COMPLETED)}>Show Complete</button>
     </div>
   );
 };

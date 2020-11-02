@@ -8,7 +8,6 @@ export interface Todo {
 
 //--------- State Types -------------
 export interface AppState {
-  //   visibilityFilter: string;
   todoState: TodoState;
   visibilityState: VisibilityState;
 }

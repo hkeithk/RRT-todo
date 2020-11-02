@@ -1,4 +1,3 @@
-import React from 'react';
 import FilterButton from 'components/FilterButton';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
@@ -24,4 +23,7 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchFromProps => ({
   setFilter: (filter: string) => dispatch(setVisibilityFilter(filter)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(FilterButton);
+export default connect<StateFromProps, DispatchFromProps, {}, AppState>(
+  mapStateToProps,
+  mapDispatchToProps,
+)(FilterButton);
