@@ -2,7 +2,6 @@ import React from 'react';
 import { Dispatch } from 'redux';
 import { addTodo } from 'redux/actions';
 import { connect } from 'react-redux';
-import { Todo } from 'types';
 import 'css/addTodo.css';
 
 interface Props {
