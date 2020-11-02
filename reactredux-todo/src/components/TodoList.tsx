@@ -10,11 +10,8 @@ interface Props {
   deleteTodo: (id: number) => void;
   toggleVisibility: (id: number) => void;
 }
-// type AllProps = StateProps | DispatchProps | OwnProps;
-// {(todos || []).map((todo: Todo)
 
 const TodoList: React.FC<Props> = ({ todos, deleteTodo, toggleVisibility, filter }) => {
-  // todos = [{}{}]
   const filteredList = (filter: string): Array<Todo> => {
     switch (filter) {
       case 'SHOW_ALL':
@@ -49,5 +46,3 @@ const TodoList: React.FC<Props> = ({ todos, deleteTodo, toggleVisibility, filter
 };
 
 export default TodoList;
-
-// export default connect<StateProps, {}, OwnProps>(mapStateToProps)(TodoList);

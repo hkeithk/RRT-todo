@@ -6,7 +6,6 @@ interface Props {
   completed: boolean;
   deleteTodo: () => void;
   toggleVisibility: () => void;
-  // deleteTodo: (id: number) => void;
 }
 
 export const TodoItem: React.FC<Props> = ({ text, deleteTodo, toggleVisibility, completed }) => (
@@ -18,9 +17,6 @@ export const TodoItem: React.FC<Props> = ({ text, deleteTodo, toggleVisibility, 
     >
       {text}
     </p>
-    {/* <button className='button' onClick={toggleVisibility}>
-      Toggle
-    </button> */}
     <button className='button' onClick={deleteTodo}>
       delete
     </button>

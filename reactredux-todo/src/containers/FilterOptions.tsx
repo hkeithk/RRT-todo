@@ -4,7 +4,6 @@ import { Dispatch } from 'redux';
 import { AppState } from 'types';
 import { setVisibilityFilter } from 'redux/actions';
 
-//interfaces for mapstate and mapdispatch
 interface StateFromProps {
   visibilityFilter: string;
 }
