@@ -6,17 +6,34 @@ import { TodoItem } from 'components/TodoItem';
 
 interface Props {
   todos: Array<Todo>;
+  filter: string;
   deleteTodo: (id: number) => void;
   toggleVisibility: (id: number) => void;
 }
 // type AllProps = StateProps | DispatchProps | OwnProps;
 // {(todos || []).map((todo: Todo)
 
-const TodoList: React.FC<Props> = ({ todos, deleteTodo, toggleVisibility }) => {
+const TodoList: React.FC<Props> = ({ todos, deleteTodo, toggleVisibility, filter }) => {
+  // todos = [{}{}]
+  const filteredList = (filter: string): Array<Todo> => {
+    switch (filter) {
+      case 'SHOW_ALL':
+        return todos;
+      case 'SHOW_COMPLETED':
+        return todos.filter((todo: any) => todo.completed);
+      case 'SHOW_INCOMPLETE':
+        return todos.filter((todo: Todo) => todo.completed === false);
+      default:
+        return todos;
+    }
+  };
+
+  const values = filteredList(filter);
+
   return (
     <div>
-      {todos && Object.keys(todos).length > 0 ? (
-        (todos || []).map((todo: Todo) => (
+      {values && Object.keys(values).length > 0 ? (
+        (values || []).map((todo: Todo) => (
           <TodoItem
             key={todo.id}
             deleteTodo={() => deleteTodo(todo.id)}

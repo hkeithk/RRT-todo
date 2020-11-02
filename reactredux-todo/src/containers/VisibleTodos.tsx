@@ -6,6 +6,7 @@ import { deleteTodo, toggleTodo } from 'redux/actions';
 
 interface StateFromProps {
   todos: Array<Todo>;
+  filter: string;
 }
 interface DispatchFromProps {
   deleteTodo: (id: number) => void;
@@ -15,7 +16,7 @@ interface DispatchFromProps {
 //selects which part of redux state you want, and returns that part, called everytime store changes,
 //like useSelector. first argument is redux state, second is ownProps
 const mapStateToProps = (state: AppState): StateFromProps => {
-  return { todos: state.todoState.todos };
+  return { todos: state.todoState.todos, filter: state.visibilityState.filter };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchFromProps => ({
